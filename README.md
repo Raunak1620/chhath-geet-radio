@@ -1,18 +1,27 @@
-# Chhath Geet Radio
+# 🌞 Chhath Geet Radio
 
-Files: `index.html` and `api/wishes.js`. No build, no npm.
+### A little piece of home, wherever you are. 🙏
 
-## Deploy on Vercel
-1. Put both in a GitHub repo, import it on vercel.com (framework preset: Other), deploy.
-2. **For the wish wall (2 clicks):** open the project > **Storage** > add **Upstash Redis** (free) > connect it to the project. Then redeploy once. Vercel sets the connection settings for you.
+Chhath Puja is more than a festival. It is faith, devotion, gratitude, and a beautiful connection to our roots.
 
-Until step 2, everything works except the wish wall, which says it is being set up.
+**Chhath Geet Radio** is a small effort to keep this tradition alive and bring the soulful melodies of Chhath closer to everyone, wherever they may be.
 
-## Test on your computer
-Do not double-click `index.html`; YouTube refuses to play from `file://` (error 153). Run `python3 -m http.server 8000` and open http://localhost:8000 (the wish wall only works on Vercel).
+🎶 **Listen to Chhath Geet**  
+Enjoy the timeless devotional songs that make this festival so special.
 
-## Edit songs
-Find the `tracks` list in `index.html`. The id is the part after `watch?v=` in a YouTube link.
+🙏 **Mannat Ki Diwar**  
+Share your wishes, prayers, and heartfelt messages. Every wish carries a little hope, faith, and love.
 
-Songs play through YouTube's embedded player, so YouTube may show ads.
-"# chhath-geet-radio" 
+🌅 **Celebrate Chhath**  
+From Nahay-Khay and Kharna to Sandhya Arghya and Usha Arghya, relive the beautiful moments and traditions of Chhath Puja.
+
+❤️ **Stay Connected to Your Roots**  
+Whether you're celebrating at home, away from Bihar, or missing your loved ones, let these songs bring you closer to the festival and the feeling of home.
+
+---
+
+**May Chhathi Maiya bless every family with happiness, peace, good health, and prosperity.**
+
+### जय छठी मईया! 🌞🙏
+
+*Made with love for Chhath Puja, Bihar, and everyone who carries this beautiful tradition in their heart.*
