@@ -1,0 +1,1035 @@
+<!doctype html>
+<html lang="hi" data-time="usha">
+<head>
+<meta charset="utf-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>छठ गीत रेडियो | Chhath Geet Radio</title>
+<meta name="description" content="Free Chhath Puja song radio. Nonstop Chhath geet playing right here with a TV mode and the four days of Chhath.">
+<meta name="theme-color" content="#14112b">
+<meta property="og:title" content="छठ गीत रेडियो | Chhath Geet Radio">
+<meta property="og:description" content="Nonstop Chhath geet playing right here, with a countdown to Chhath 2026. No sign-up needed.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Mukta:wght@400;600;700;800&family=Rozha+One&family=Tiro+Devanagari+Hindi&display=swap">
+<style>
+/* Layout concept: one illustrated ghat fills the first screen, with a retro TV set on the river bank
+   playing the song and a player bar under it. Below, a dark indigo night holds the song list,
+   festival days, checklist and recipe. TV mode turns the set into a full-screen display. */
+:root {
+  color-scheme: dark;
+  --bg: #14112b;
+  --card: #1e1a3d;
+  --fg: #f6ead8;
+  --muted: #b4a9c9;
+  --line: #342e5c;
+  --accent: #ff9a3c;
+  --accent2: #ffd27a;
+  --on-accent: #1b1020;
+  --font-display: 'Rozha One', 'Tiro Devanagari Hindi', Georgia, serif;
+  --font-serif: 'Tiro Devanagari Hindi', 'Noto Serif Devanagari', Georgia, serif;
+  --font-body: 'Mukta', 'Noto Sans Devanagari', system-ui, sans-serif;
+  --font-data: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+}
+/* scene colours, switched by the sunrise / sunset button */
+html[data-time="usha"] {
+  --sky1: #262a63; --sky2: #c4557c; --sky3: #ffb86b;
+  --sun: #ffd27a; --far: #5b4a7e; --far2: #46386a;
+  --water1: #f0a066; --water2: #34437a; --ripple: #ffe2b0;
+  --silh: #170f2e; --stone: #2b2146; --stone2: #3a2d5a; --leaf: #2d5a47; --leaf2: #3f7a58; --cane: #7da34a;
+}
+html[data-time="sandhya"] {
+  --sky1: #1d1a47; --sky2: #b0403f; --sky3: #ff8a3d;
+  --sun: #ff6a2a; --far: #4b2a48; --far2: #3a2040;
+  --water1: #e0602d; --water2: #2a2a58; --ripple: #ffb27a;
+  --silh: #140c26; --stone: #2a1a3a; --stone2: #3b2548; --leaf: #2a4a3c; --leaf2: #3a6a4e; --cane: #8a9a44;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+a { color: inherit; }
+h1, h2, h3, h4, p { margin: 0; }
+h2, h3 { font-family: var(--font-serif); font-weight: 400; line-height: 1.15; text-wrap: balance; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--accent2); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1080px; margin-inline: auto; padding-inline: 16px; }
+.eyebrow { font-family: var(--font-data); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.note { font-size: 14px; color: var(--muted); max-width: 70ch; }
+
+/* ---------- hero scene ---------- */
+.hero {
+  position: relative; isolation: isolate; overflow: hidden; min-height: 100vh; min-height: 100svh;
+  display: flex; flex-direction: column; align-items: center; padding: 84px 16px 22px; color: #fff;
+}
+.scene { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; display: block; }
+.veil { position: absolute; inset: 0; z-index: -1; background: linear-gradient(to bottom, rgba(10,6,24,0.35), transparent 26%, transparent 52%, rgba(10,6,24,0.82)); }
+.scene .sunbody { transition: fill 0.6s; }
+.scene .shimmer { animation: shimmer 4.5s ease-in-out infinite; }
+.scene .flame { animation: flicker 2.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center bottom; }
+.scene .bird { animation: fly 46s linear infinite; }
+@keyframes shimmer { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.7; } }
+@keyframes flicker { 0%, 100% { transform: scale(1, 1); opacity: 0.95; } 50% { transform: scale(0.88, 1.15); opacity: 0.75; } }
+@keyframes fly { from { transform: translateX(-120px); } to { transform: translateX(1800px); } }
+
+.pillnav { position: absolute; top: calc(14px + env(safe-area-inset-top, 0px)); left: 16px; right: 16px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; z-index: 5; }
+.pill {
+  display: inline-flex; align-items: center; gap: 8px; font: 700 13px/1 var(--font-body); padding: 11px 16px; border-radius: 999px; cursor: pointer; text-decoration: none; color: #fff;
+  background: rgba(20, 12, 24, 0.62); border: 1px solid rgba(255, 255, 255, 0.16); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.pill:hover { border-color: var(--accent2); color: var(--accent2); }
+.pill .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent2); }
+
+.title { font-family: var(--font-display); font-weight: 400; font-size: clamp(56px, min(12vw, 15vh), 150px); line-height: 0.98; text-align: center; margin-top: 6px; text-shadow: 0 4px 34px rgba(0, 0, 0, 0.5); }
+.title span { color: var(--accent2); }
+.tagline { margin-top: 10px; text-align: center; font-size: 17px; text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6); max-width: 46ch; }
+.hero .gap { flex: 1 1 auto; min-height: 12px; }
+
+/* TV set */
+.tvset { position: relative; width: min(540px, 92vw); margin-top: 52px; z-index: 3; }
+@media (max-height: 860px) and (min-width: 700px) { .tagline { display: none; } .hero { padding-top: 76px; } }
+.tvset::before, .tvset::after { content: ''; position: absolute; top: -56px; left: 50%; width: 3px; height: 64px; background: #7a6454; transform-origin: bottom center; border-radius: 2px; }
+.tvset::before { transform: rotate(-26deg); }
+.tvset::after { transform: rotate(24deg); }
+.tv-frame { background: linear-gradient(#2d1f18, #160e0b); border: 1px solid #4d3628; border-radius: 22px; padding: 12px; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.07); }
+.tv-body { display: grid; grid-template-columns: minmax(0, 1fr) 52px; gap: 10px; }
+.tv-screen { position: relative; aspect-ratio: 16 / 9; background: #000; border-radius: 12px / 14px; overflow: hidden; box-shadow: inset 0 0 0 2px #0a0605; min-width: 0; }
+.tv-screen iframe, .tv-screen #player { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.tv-side { display: grid; align-content: start; gap: 14px; padding-top: 8px; }
+.knob { width: 34px; height: 34px; margin-inline: auto; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #8a6f5a, #3a281d); border: 1px solid #1a110c; }
+.speaker { height: 54px; border-radius: 6px; background: repeating-linear-gradient(to bottom, #0c0705 0 3px, #2a1d16 3px 6px); }
+.tv-status { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; font-family: var(--font-data); font-size: 11px; letter-spacing: 0.1em; color: #b8a08a; text-transform: uppercase; }
+.tv-status .led { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #5a3f2e; margin-right: 6px; }
+body.playing .tv-status .led { background: #5dff9a; box-shadow: 0 0 8px #5dff9a; }
+.tv-fail { position: absolute; inset: 0; display: none; place-items: center; text-align: center; padding: 16px; background: #000; color: #e9d9c6; font-size: 15px; }
+.tv-fail.on { display: grid; }
+
+.tvpanel { display: none; }
+
+/* player bar */
+.bar {
+  position: relative; z-index: 3; width: min(820px, 100%); margin-top: 16px; display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 8px 14px; align-items: center;
+  padding: 12px 16px; border-radius: 22px; background: rgba(18, 10, 22, 0.74); border: 1px solid rgba(255, 255, 255, 0.14); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+.art { width: 56px; height: 56px; border-radius: 12px; object-fit: cover; background: #2a2040; display: block; }
+.meta { min-width: 0; display: grid; gap: 2px; }
+.meta .t { font-weight: 700; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.meta .c { font-size: 12px; color: #c7bad9; font-family: var(--font-data); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.seek { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px; align-items: center; font-family: var(--font-data); font-size: 11px; color: #c7bad9; font-variant-numeric: tabular-nums; }
+.seek input { width: 100%; accent-color: var(--accent); }
+.ctl { display: flex; align-items: center; gap: 8px; }
+.ib { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.06); display: grid; place-items: center; cursor: pointer; color: #fff; padding: 0; }
+.ib:hover { border-color: var(--accent2); }
+.ib svg { width: 18px; height: 18px; fill: currentColor; display: block; }
+.ib.on { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.ib.play { width: 54px; height: 54px; background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.ib.play svg { width: 24px; height: 24px; }
+.ib .pause { display: none; }
+body.playing .ib .pause { display: block; }
+body.playing .ib .playi { display: none; }
+.vol { width: 84px; accent-color: var(--accent); }
+.scrollhint { position: relative; z-index: 3; margin-top: 14px; font-family: var(--font-data); font-size: 11px; letter-spacing: 0.3em; color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+
+/* ---------- TV mode ---------- */
+body.tvmode { overflow: hidden; }
+body.tvmode .tvset {
+  position: fixed; inset: 0; width: auto; margin: 0; z-index: 1000; display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+  gap: 2.4vw; align-items: center; padding: 2.4vh 2.4vw; background: radial-gradient(circle at 30% 20%, #1d1745, #05030f 70%);
+}
+body.tvmode .tvset::before, body.tvmode .tvset::after, body.tvmode .tv-side, body.tvmode .tv-status { display: none; }
+body.tvmode .tv-frame { background: none; border: 0; box-shadow: none; padding: 0; }
+body.tvmode .tv-body { display: block; }
+body.tvmode .tv-screen { border-radius: 14px; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 30px 80px rgba(0, 0, 0, 0.6); }
+body.tvmode .tvpanel { display: flex; flex-direction: column; gap: 18px; min-width: 0; max-height: 96vh; overflow: hidden; }
+.tvpanel .clock { font-family: var(--font-data); font-size: clamp(28px, 4vh, 44px); font-variant-numeric: tabular-nums; color: var(--accent2); }
+.tvpanel .cd { font-size: clamp(14px, 2.2vh, 18px); color: var(--muted); }
+.tvpanel .now { font-family: var(--font-serif); font-size: clamp(30px, 5.4vh, 54px); line-height: 1.12; overflow-wrap: anywhere; }
+.tvpanel .nowen { font-weight: 700; font-size: clamp(16px, 2.6vh, 24px); overflow-wrap: anywhere; }
+.tvpanel .by { font-family: var(--font-data); font-size: clamp(11px, 1.7vh, 14px); color: var(--muted); }
+.tvpanel h4 { font-family: var(--font-data); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.tvpanel ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.tvpanel ol li { font-size: clamp(14px, 2.2vh, 19px); border-top: 1px solid var(--line); padding-top: 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tvpanel .tvctl { display: flex; flex-wrap: wrap; gap: 10px; }
+.tvpanel .tvctl .ib { width: 54px; height: 54px; }
+.tvpanel .tvctl .ib.play { width: 68px; height: 68px; }
+.tvpanel .exit { font: 700 14px var(--font-body); padding: 12px 18px; border-radius: 999px; background: transparent; border: 1.5px solid var(--muted); color: var(--fg); cursor: pointer; }
+.tvpanel .exit:hover, .tvpanel .exit:focus-visible { border-color: var(--accent2); color: var(--accent2); }
+@media (max-width: 860px) {
+  body.tvmode .tvset { grid-template-columns: minmax(0, 1fr); align-content: start; overflow-y: auto; }
+  body.tvmode .tvpanel { max-height: none; }
+}
+
+/* ---------- sections ---------- */
+section { padding-block: 60px; border-top: 1px solid var(--line); }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; margin-bottom: 28px; }
+.sec-head h2 { font-size: clamp(32px, 5vw, 46px); }
+.intro { max-width: 62ch; font-size: 19px; margin-bottom: 28px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 700 15px/1 var(--font-body); padding: 13px 20px; border-radius: 999px; cursor: pointer; text-decoration: none; border: 1.5px solid var(--fg); background: transparent; color: var(--fg); }
+.btn:hover { border-color: var(--accent2); color: var(--accent2); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.btn.primary:hover { filter: brightness(1.08); color: var(--on-accent); }
+.btn.small { padding: 9px 14px; font-size: 14px; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+input[type="text"], input[type="search"], select, textarea { font: inherit; font-size: 16px; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; width: 100%; min-width: 0; }
+textarea { resize: vertical; min-height: 96px; }
+label { font-size: 14px; color: var(--muted); }
+
+.about-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 32px; }
+.about-grid h3 { font-size: 24px; color: var(--accent); margin-bottom: 8px; }
+.about-grid p { color: var(--muted); }
+
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.chip { font: 700 14px/1 var(--font-body); padding: 10px 16px; border-radius: 999px; border: 1.5px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; }
+.chip:hover { border-color: var(--accent2); }
+.chip.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.tracks { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
+.tracks li { border-bottom: 1px solid var(--line); min-width: 0; }
+.trk { width: 100%; display: grid; grid-template-columns: 34px minmax(0, 1fr) 26px; gap: 12px; align-items: center; text-align: left; background: transparent; border: 0; padding: 13px 6px; cursor: pointer; }
+.trk:hover { background: var(--card); }
+.trk[aria-current="true"] { background: var(--card); box-shadow: inset 4px 0 0 var(--accent); }
+.trk .n { font-family: var(--font-data); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.trk .tt { display: grid; min-width: 0; }
+.trk .tt b { font-family: var(--font-serif); font-weight: 400; font-size: 20px; overflow-wrap: anywhere; }
+.trk .tt em { font-style: normal; font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+.eq { display: none; align-items: flex-end; gap: 2px; height: 16px; }
+.eq i { width: 4px; background: var(--accent); animation: eq 0.9s ease-in-out infinite; height: 40%; }
+.eq i:nth-child(2) { animation-delay: -0.3s; }
+.eq i:nth-child(3) { animation-delay: -0.6s; }
+@keyframes eq { 0%, 100% { height: 25%; } 50% { height: 100%; } }
+body.playing .trk[aria-current="true"] .eq { display: flex; }
+
+.band { background: #0a0820; }
+.mixer { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; margin-block: 8px 24px; }
+.chan { border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.chan h3 { font-size: 24px; }
+.chan input[type="range"] { width: 100%; accent-color: var(--accent); }
+.chan select { background: #0a0820; }
+
+.days { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 2px solid var(--fg); }
+.day { padding: 18px 18px 8px 0; display: grid; gap: 6px; align-content: start; position: relative; min-width: 0; }
+.day + .day { padding-left: 18px; border-left: 1px solid var(--line); }
+.day .date { font-family: var(--font-data); font-size: 13px; color: var(--muted); }
+.day .date b { display: block; font-family: var(--font-serif); font-weight: 400; font-size: 44px; line-height: 1; color: var(--fg); margin-top: 4px; }
+.day h3 { font-size: 26px; }
+.day .en { font-weight: 700; font-size: 15px; }
+.day p.d { color: var(--muted); font-size: 15px; }
+.day.is-now .date b { color: var(--accent); }
+.day.is-now::before { content: 'आज'; position: absolute; top: -13px; left: 0; background: var(--accent); color: var(--on-accent); font-size: 13px; font-weight: 700; padding: 0 10px; border-radius: 999px; }
+.day.is-now + .day::before, .day + .day.is-now::before { left: 18px; }
+.count { font-family: var(--font-data); font-size: 14px; color: var(--muted); margin-bottom: 18px; }
+.count b { color: var(--accent2); font-weight: 500; font-size: 24px; }
+
+.two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; align-items: start; }
+.checks { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.checks li { border-bottom: 1px solid var(--line); }
+.checks label { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 12px; align-items: center; padding: 11px 4px; font-size: 17px; color: var(--fg); cursor: pointer; }
+.checks input { width: 20px; height: 20px; accent-color: var(--accent); }
+.checks input:checked + span { text-decoration: line-through; color: var(--muted); }
+.progress { font-family: var(--font-data); font-size: 13px; color: var(--muted); margin-top: 12px; }
+.story p { color: var(--muted); font-size: 18px; max-width: 62ch; }
+.story p + p { margin-top: 12px; }
+.story h3, .recipe h3 { font-size: 26px; margin-bottom: 8px; }
+.recipe .ing { font-family: var(--font-data); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.recipe ul, .recipe ol { margin: 10px 0 0; padding-left: 22px; display: grid; gap: 6px; }
+.guide-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 32px; }
+.guide-grid h3 { font-size: 24px; margin-bottom: 6px; color: var(--accent); }
+.guide-grid p { color: var(--muted); }
+
+.composer { border: 1px solid var(--line); background: var(--card); border-radius: 20px; padding: 22px; display: grid; gap: 12px; max-width: 760px; }
+.composer .meta2 { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+.counter { font-family: var(--font-data); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.starters { display: flex; flex-wrap: wrap; gap: 8px; }
+.starters .btn { text-align: left; line-height: 1.35; font-weight: 400; }
+.wall-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; margin: 36px 0 14px; }
+.wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+.lamp { position: relative; display: inline-block; width: 18px; height: 22px; }
+.lamp::before { content: ''; position: absolute; left: 50%; top: 0; width: 8px; height: 13px; transform: translateX(-50%); border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%; background: var(--accent2); box-shadow: 0 0 10px 3px rgba(255, 210, 122, 0.55); }
+.lamp::after { content: ''; position: absolute; left: 0; bottom: 0; width: 18px; height: 8px; border-radius: 0 0 18px 18px; background: var(--accent); }
+.empty { border: 1px dashed var(--line); border-radius: 14px; padding: 22px; color: var(--muted); }
+
+.faq { max-width: 760px; }
+.faq details { border-bottom: 1px solid var(--line); padding-block: 14px; }
+.faq summary { cursor: pointer; font-weight: 700; font-size: 18px; }
+.faq details p { margin-top: 8px; color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding-block: 36px 56px; color: var(--muted); font-size: 14px; }
+footer .wrap { display: grid; gap: 10px; }
+footer .name { font-family: var(--font-display); font-size: 30px; color: var(--fg); }
+
+@media (max-width: 860px) {
+  .about-grid, .guide-grid, .two-col, .tracks { grid-template-columns: minmax(0, 1fr); }
+  .days { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .day:nth-child(3) { padding-left: 0; border-left: 0; }
+  .day:nth-child(n+3) { border-top: 1px solid var(--line); margin-top: 8px; }
+  .day.is-now:nth-child(3)::before { left: 0; }
+  .bar { grid-template-columns: 56px minmax(0, 1fr); }
+  .bar .ctl { grid-column: 1 / -1; justify-content: center; }
+  .vol { display: none; }
+}
+@media (max-width: 520px) {
+  body { font-size: 16px; }
+  .hero { padding-top: 120px; }
+  .tv-body { grid-template-columns: minmax(0, 1fr); }
+  .tv-side { display: none; }
+  .days { grid-template-columns: minmax(0, 1fr); }
+  .day, .day + .day { padding-left: 0; border-left: 0; }
+  .day + .day { border-top: 1px solid var(--line); margin-top: 8px; }
+  .day.is-now::before, .day.is-now + .day::before, .day + .day.is-now::before { left: 0; }
+}
+
+/* ---------- phone banner ---------- */
+@media (max-width: 520px) {
+  .hero { padding-top: 70px; background: var(--water2); }
+  .scene { bottom: auto; height: 72vh; height: 72svh; -webkit-mask-image: linear-gradient(#000 80%, transparent); mask-image: linear-gradient(#000 80%, transparent); }
+  .veil { background: linear-gradient(to bottom, rgba(10,6,24,0.45), transparent 22%, transparent 60%, rgba(10,6,24,0.55)); }
+  .pillnav { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; gap: 6px; left: 0; right: 0; padding: 0 12px; }
+  .pillnav::-webkit-scrollbar { display: none; }
+  .pill { font-size: 12px; padding: 9px 12px; white-space: nowrap; flex: 0 0 auto; }
+  .title { font-size: 54px; margin-top: 4px; }
+  .tagline { font-size: 15px; margin-top: 6px; }
+  .hero .gap { min-height: 210px; }
+  .tvset { margin-top: 58px; }
+  .composer { padding: 16px; border-radius: 16px; }
+  .composer textarea { min-height: 120px; font-size: 16px; }
+  .composer .meta2 .btn { width: 100%; justify-content: center; }
+  .starters .btn { font-size: 14px; }
+  .wall { grid-template-columns: minmax(0, 1fr); }
+}
+
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.cdstrip { display: grid; gap: 10px; justify-items: center; text-align: center; padding: 18px 16px; margin-bottom: 36px; border: 1px solid var(--line); border-radius: 20px; background: var(--card); }
+.cdlabel { font-family: var(--font-serif); font-size: 22px; }
+.cdbox { display: grid; grid-template-columns: repeat(4, minmax(0, 76px)); gap: 10px; }
+.cdbox div { display: grid; gap: 2px; padding: 10px 4px; border-radius: 12px; background: rgba(255, 179, 71, 0.1); }
+.cdbox b { font-family: var(--font-data); font-size: 30px; font-weight: 600; color: var(--accent2); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.cdbox span { font-size: 12px; color: var(--muted); }
+.cdstrip.live .cdbox { display: none; }
+.composer { border: 1px solid var(--line); background: var(--card); border-radius: 20px; padding: 20px; display: grid; gap: 12px; max-width: 760px; }
+.wish-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; }
+.counter { font-family: var(--font-data); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+.wish-card { border: 1px solid var(--line); background: var(--card); border-radius: 14px; padding: 16px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.wish-card p { font-family: var(--font-serif); font-size: 20px; line-height: 1.4; overflow-wrap: anywhere; white-space: pre-wrap; }
+.wish-card .when { font-family: var(--font-data); font-size: 12px; color: var(--muted); }
+@media (max-width: 520px) { .wall { grid-template-columns: minmax(0, 1fr); } .wish-row .btn { width: 100%; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .scene .shimmer, .scene .flame, .scene .bird, .eq i { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <svg class="scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" style="stop-color:var(--sky1)"/><stop offset="0.55" style="stop-color:var(--sky2)"/><stop offset="1" style="stop-color:var(--sky3)"/>
+      </linearGradient>
+      <radialGradient id="gGlow"><stop offset="0" style="stop-color:var(--sun);stop-opacity:0.85"/><stop offset="1" style="stop-color:var(--sun);stop-opacity:0"/></radialGradient>
+      <linearGradient id="gRiver" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--water1)"/><stop offset="1" style="stop-color:var(--water2)"/></linearGradient>
+      <linearGradient id="gRefl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--sun);stop-opacity:0.8"/><stop offset="1" style="stop-color:var(--sun);stop-opacity:0"/></linearGradient>
+      <g id="leaf"><path d="M0 0 C 50 -46 150 -66 232 -32 C 150 -24 70 -10 0 0Z"/></g>
+      <g id="person">
+        <ellipse cx="0" cy="-104" rx="30" ry="7"/>
+        <circle cx="0" cy="-78" r="11"/>
+        <path d="M-17 0 L-12 -64 Q0 -72 12 -64 L17 0Z"/>
+        <path d="M-12 -58 L-28 -98 M12 -58 L28 -98" style="stroke:var(--silh);stroke-width:6;fill:none;stroke-linecap:round"/>
+      </g>
+    </defs>
+    <rect width="1600" height="900" fill="url(#gSky)"/>
+    <g id="stars" style="fill:#fff;opacity:0.5"></g>
+    <circle class="sunbody" cx="520" cy="552" r="300" fill="url(#gGlow)"/>
+    <circle class="sunbody" cx="520" cy="548" r="92" style="fill:var(--sun)"/>
+    <g class="bird" style="fill:none;stroke:var(--silh);stroke-width:3;stroke-linecap:round"><path transform="translate(0 210)" d="M0 0 q9 -9 18 0 q9 -9 18 0"/><path transform="translate(70 238)" d="M0 0 q7 -7 14 0 q7 -7 14 0"/><path transform="translate(-40 258)" d="M0 0 q6 -6 12 0 q6 -6 12 0"/></g>
+    <g style="fill:var(--far)">
+      <path d="M96 566 V506 H130 V476 L152 420 L174 476 V506 H208 V566Z"/><circle cx="152" cy="412" r="6"/>
+      <path d="M236 566 V528 H258 V508 L272 478 L286 508 V528 H308 V566Z"/>
+      <path d="M1330 566 V498 H1450 V566Z"/><path d="M1344 498 A46 46 0 0 1 1436 498Z"/><rect x="1388" y="438" width="4" height="16"/>
+      <path d="M1480 566 V520 H1520 V566Z"/>
+    </g>
+    <path id="treeline" style="fill:var(--far2)" d=""/>
+    <rect y="562" width="1600" height="338" fill="url(#gRiver)"/>
+    <rect x="466" y="562" width="108" height="338" fill="url(#gRefl)"/>
+    <g id="ripples" style="stroke:var(--ripple);stroke-width:2;stroke-linecap:round"></g>
+    <g id="people" style="fill:var(--silh)">
+      <use href="#person" transform="translate(640 650) scale(0.62)"/>
+      <use href="#person" transform="translate(704 640) scale(0.56)"/>
+      <use href="#person" transform="translate(1010 648) scale(0.6)"/>
+      <use href="#person" transform="translate(1086 660) scale(0.7)"/>
+      <use href="#person" transform="translate(1180 646) scale(0.58)"/>
+    </g>
+    <g id="diyas"></g>
+    <path d="M0 900 V736 H150 V772 H282 V812 H420 V856 H540 V900Z" style="fill:var(--stone)"/>
+    <path d="M0 900 V790 H100 V828 H220 V866 H330 V900Z" style="fill:var(--stone2)"/>
+    <path d="M1600 900 V712 H1440 V754 H1300 V800 H1160 V850 H1040 V900Z" style="fill:var(--stone)"/>
+    <path d="M1600 900 V780 H1500 V820 H1380 V862 H1270 V900Z" style="fill:var(--stone2)"/>
+    <g id="bananaL" transform="translate(90 740)" style="fill:var(--leaf)">
+      <rect x="-9" y="-10" width="18" height="120" style="fill:#3a2b3f" transform="translate(0 10)"/>
+      <use href="#leaf" transform="rotate(-150) scale(0.9)"/><use href="#leaf" transform="rotate(-120)" style="fill:var(--leaf2)"/><use href="#leaf" transform="rotate(-92) scale(1.1)"/>
+      <use href="#leaf" transform="rotate(-62)" style="fill:var(--leaf2)"/><use href="#leaf" transform="rotate(-32) scale(0.9)"/><use href="#leaf" transform="rotate(-175) scale(0.75)" style="fill:var(--leaf2)"/>
+    </g>
+    <g id="bananaR" transform="translate(1510 728)" style="fill:var(--leaf)">
+      <rect x="-9" y="-10" width="18" height="130" style="fill:#3a2b3f" transform="translate(0 10)"/>
+      <use href="#leaf" transform="rotate(-150) scale(0.9)"/><use href="#leaf" transform="rotate(-118) scale(1.05)" style="fill:var(--leaf2)"/><use href="#leaf" transform="rotate(-88)"/>
+      <use href="#leaf" transform="rotate(-58) scale(1.1)" style="fill:var(--leaf2)"/><use href="#leaf" transform="rotate(-28) scale(0.85)"/>
+    </g>
+    <g id="cane" style="stroke:var(--cane);stroke-width:9;stroke-linecap:round;fill:none">
+      <path d="M1388 840 L1370 560"/><path d="M1414 850 L1408 540"/><path d="M1440 846 L1454 574"/>
+    </g>
+    <g style="fill:var(--leaf2)"><path d="M1370 560 q-34 -30 -58 -8 q30 -2 58 8Z"/><path d="M1408 540 q30 -36 62 -18 q-34 2 -62 18Z"/><path d="M1454 574 q34 -26 56 -4 q-28 0 -56 4Z"/></g>
+  </svg>
+  <div class="veil"></div>
+
+  <nav class="pillnav" aria-label="Main">
+    <button class="pill" id="timeBtn" type="button" aria-label="Switch between sunrise and sunset scene"><span class="dot"></span><span id="timeLabel">उषा · Sunrise</span></button>
+    <button class="pill" id="tvBtn" type="button">TV mode</button>
+    <a class="pill" href="#about">About</a>
+    <a class="pill" href="#wishes">Wishes</a>
+    <a class="pill" href="#faq">FAQ</a>
+    <button class="pill" id="shareBtn" type="button">Share</button>
+  </nav>
+
+  <h1 class="title">छठ गीत<br><span>रेडियो</span></h1>
+  <p class="tagline">Nonstop Chhath geet, playing right here. No sign-up needed.</p>
+  <div class="gap"></div>
+
+  <div class="tvset" id="tvset">
+    <div class="tv-frame">
+      <div class="tv-body">
+        <div class="tv-screen">
+          <div id="player"></div>
+          <div class="tv-fail" id="tvFail" role="status">Loading the TV. If this stays blank, check your internet connection.</div>
+        </div>
+        <div class="tv-side" aria-hidden="true"><div class="knob"></div><div class="knob"></div><div class="speaker"></div></div>
+      </div>
+      <div class="tv-status"><span><i class="led"></i><span id="tvLabel">Standby</span></span><span id="tvCh">CH 01</span></div>
+    </div>
+    <aside class="tvpanel" aria-label="TV mode panel">
+      <p class="clock" id="tvClock"></p>
+      <p class="cd" id="tvCd"></p>
+      <h4>अभी बज रहा है · Now playing</h4>
+      <p class="now" id="tvNow"></p>
+      <p class="nowen" id="tvNowEn"></p>
+      <p class="by" id="tvBy"></p>
+      <div class="tvctl">
+        <button class="ib" id="tvPrev" type="button" aria-label="Previous song"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
+        <button class="ib play" id="tvPlay" type="button" aria-label="Play or pause"><svg class="playi" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button>
+        <button class="ib" id="tvNext" type="button" aria-label="Next song"><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5l11 7-11 7z"/></svg></button>
+        <button class="exit" id="tvExit" type="button">Exit TV mode</button>
+      </div>
+      <h4>आगे · Up next</h4>
+      <ol id="tvNextList"></ol>
+    </aside>
+  </div>
+
+  <div class="bar" id="bar">
+    <img class="art" id="art" alt="" width="56" height="56">
+    <div class="meta">
+      <p class="t" id="barTitle">छठ गीत रेडियो</p>
+      <p class="c" id="barCredit">Press play</p>
+      <div class="seek"><span id="tCur">0:00</span><input id="seek" type="range" min="0" max="1000" value="0" aria-label="Seek"><span id="tDur">0:00</span></div>
+    </div>
+    <div class="ctl">
+      <button class="ib" id="prev" type="button" aria-label="Previous song"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
+      <button class="ib play" id="play" type="button" aria-label="Play or pause"><svg class="playi" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button>
+      <button class="ib" id="next" type="button" aria-label="Next song"><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5l11 7-11 7z"/></svg></button>
+      <button class="ib" id="shuf" type="button" aria-label="Shuffle" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M17 3l4 4-4 4V8h-3.6l-3 4.2L7 16H3v-2h3l2.4-3.4L5 6H3V4h3l3 4.2L12 5h5zM3 16h3l7 .0h4v-3l4 4-4 4v-3h-4z"/></svg></button>
+      <button class="ib" id="mute" type="button" aria-label="Mute" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9zM16 8a5 5 0 0 1 0 8l-1-1.5a3 3 0 0 0 0-5z"/></svg></button>
+      <input class="vol" id="vol" type="range" min="0" max="100" value="80" aria-label="Volume">
+    </div>
+  </div>
+  <a class="scrollhint" href="#songs">SCROLL</a>
+</header>
+
+<main>
+  <section id="songs">
+    <div class="wrap">
+      <div class="cdstrip" id="cdStrip" aria-live="off">
+        <p class="cdlabel" id="cdLabel">छठ महापर्व 2026 · नहाय-खाय में</p>
+        <div class="cdbox" id="cdBox">
+          <div><b id="cdD">0</b><span>दिन</span></div><div><b id="cdH">00</b><span>घंटे</span></div><div><b id="cdM">00</b><span>मिनट</span></div><div><b id="cdS">00</b><span>सेकंड</span></div>
+        </div>
+      </div>
+      <div class="sec-head"><h2>गीत सूची</h2><p class="eyebrow"><span id="songCount"></span> · plays on the TV above</p></div>
+      <div class="filters" id="filters" role="group" aria-label="Filter songs"></div>
+      <ol class="tracks" id="trackList"></ol>
+      <p class="note" style="margin-top:16px">Tap a song and the TV at the top starts it. Songs move on by themselves.</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head"><h2>यह जगह</h2><p class="eyebrow">About</p></div>
+      <p class="intro">Chhath Geet Radio is a free page for the songs and the four days around Chhath Puja. Press play on the TV, keep the river nearby and wait for the sun.</p>
+      <div class="about-grid">
+        <div><h3>टीवी पर गीत</h3><p>A retro TV on the river bank plays Chhath geet one after another. Open TV mode to fill a big screen at home or at your pandal.</p></div>
+      </div>
+      <div class="story" style="margin-top:40px;max-width:760px">
+        <h3>छठ की कथा</h3>
+        <p>Chhath honours Surya Dev, the visible source of life, and Chhathi Maiya, whom many families know as Shashthi, the mother who protects children.</p>
+        <p>Traditions trace the vrat to the Ramayana, where Sita is said to have kept it, and to the Mahabharata, where Draupadi is said to have fasted for her family's well-being. Families keep their own stories, passed down in the songs sung at the ghat.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="dates">
+    <div class="wrap">
+      <div class="sec-head"><h2>चार दिन</h2><p class="eyebrow">Chhath Puja 2026 · Nov 13 to 16</p></div>
+      <p class="count" id="count" aria-live="polite"></p>
+      <ol class="days" id="days">
+        <li class="day" data-start="2026-11-13" data-end="2026-11-14"><p class="date">Fri<b>13 Nov</b></p><h3>नहाय-खाय</h3><p class="en">Nahay Khay</p><p class="d">The vrati bathes, cleans the home and eats one simple meal of kaddu-bhaat and chana dal.</p></li>
+        <li class="day" data-start="2026-11-14" data-end="2026-11-15"><p class="date">Sat<b>14 Nov</b></p><h3>खरना</h3><p class="en">Kharna</p><p class="d">A day-long fast ends at sunset with jaggery kheer and roti. The 36-hour waterless fast begins.</p></li>
+        <li class="day" data-start="2026-11-15" data-end="2026-11-16"><p class="date">Sun<b>15 Nov</b></p><h3>संध्या अर्घ्य</h3><p class="en">Sandhya Arghya</p><p class="d">Families carry the soop with thekua and fruit to the ghat and offer arghya to the setting sun.</p></li>
+        <li class="day" data-start="2026-11-16" data-end="2026-11-17"><p class="date">Mon<b>16 Nov</b></p><h3>उषा अर्घ्य</h3><p class="en">Usha Arghya</p><p class="d">Arghya to the rising sun at dawn. The fast is then broken with prasad.</p></li>
+      </ol>
+      <p class="note" style="margin-top:18px">Dates follow the 2026 panchang listings. Sunset and sunrise arghya times change from city to city, so check your local panchang for the exact minute.</p>
+    </div>
+  </section>
+
+  <section id="guide">
+    <div class="wrap">
+      <div class="sec-head"><h2>घाट पर</h2><p class="eyebrow">At the ghat</p></div>
+      <div class="guide-grid">
+        <div><h3>सुरक्षा</h3><p>Go in a group, keep children close to an adult near the water, and follow the barriers and guidance of local volunteers and authorities.</p></div>
+        <div><h3>स्वच्छता</h3><p>Carry your puja waste back or use the collection points. Avoid plastic, and keep the river and the path clean for the next family.</p></div>
+        <div><h3>समय</h3><p>Reach the ghat early, carry a torch for the dark morning, and keep warm clothes handy. Early November mornings are cold.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="wishes">
+    <div class="wrap">
+      <div class="sec-head"><h2>मन्नत की दीवार</h2><p class="eyebrow">Wish wall · anonymous</p></div>
+      <p class="intro">Write a wish for Chhathi Maiya. No name or sign-up. Everyone who visits can read it.</p>
+      <form class="composer" id="wishForm" novalidate>
+        <label for="wishInput">आपकी मन्नत · Your wish</label>
+        <textarea id="wishInput" maxlength="280" rows="4" placeholder="छठी मईया, ..."></textarea>
+        <div class="wish-row"><span class="counter" id="wishCounter">0 / 280</span><button class="btn primary" id="wishGo" type="submit">Light a diya and post</button></div>
+        <p class="note" id="wishStatus" role="status" aria-live="polite">आपकी मन्नत सबको दिखेगी। कृपया नाम, फोन नंबर या पता न लिखें। · Your wish is public. Please do not write your name, phone number or address.</p>
+      </form>
+      <h3 style="font-size:26px;margin:36px 0 14px">सबकी मन्नतें</h3>
+      <p class="note" id="wallState" role="status">Loading wishes...</p>
+      <div class="wall" id="wall"></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head"><h2>सवाल-जवाब</h2><p class="eyebrow">FAQ</p></div>
+      <div class="faq">
+        <details open><summary>What is Chhath Puja?</summary><p>Chhath is a four-day festival dedicated to Surya Dev and Chhathi Maiya, celebrated mainly in Bihar, Jharkhand, eastern Uttar Pradesh and Nepal's Terai. Devotees fast and offer arghya to the setting and rising sun.</p></details>
+        <details><summary>How do I show this on a TV?</summary><p>Open this page in your smart TV's browser, or cast your browser tab to the TV, then press the TV mode button. The remote's arrow keys change songs, and OK or Space plays and pauses.</p></details>
+        <details><summary>Where do the songs come from?</summary><p>Songs play through YouTube's own embedded player, from the official channels of the singers and labels. Nothing is hosted on this site, and the credit for each song is shown in the player.</p></details>
+        <details><summary>Who is Sharda Sinha?</summary><p>Sharda Sinha was a folk singer from Bihar, widely called the voice of Chhath. Her Bhojpuri, Maithili and Magahi geet are played at ghats every year.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="name">छठ गीत रेडियो</p>
+    <p>जय छठी मईया। In memory of Sharda Sinha, whose voice carries the festival.</p>
+    <p>Disclaimer: audio and video play through YouTube's embedded player. Nothing is hosted on this site, and all rights stay with the singers, composers and labels. Festival details are general and may differ by family and region.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ================= settings ================= */
+
+  /* ================= songs (embeddable videos, checked through YouTube oEmbed) ================= */
+  var tracks = [
+    { id: "3lsi7vXrX4g", hi: "केलवा के पात पर", en: "Kelwa Ke Paat Par", who: "Sharda Sinha", by: "Sharda Sinha - Topic", tag: "sharda" },
+    { id: "9Ijd_PGkg8c", hi: "पहिले पहिल छठी मईया", en: "Pahile Pahil Chhathi Maiya", who: "Sharda Sinha", by: "Sharda Sinha Official", tag: "sharda" },
+    { id: "fOVGz9WFymU", hi: "हो दीनानाथ", en: "Ho Deenanath", who: "Sharda Sinha", by: "T-Series Bhakti Sagar", tag: "sharda" },
+    { id: "ei5ovIM5nNA", hi: "छठी मईया आई ना दुअरिया", en: "Chhathi Maiya Aayi Na Duariya", who: "Sharda Sinha", by: "Sharda Sinha - Topic", tag: "sharda" },
+    { id: "Ki-SXeraDVc", hi: "हे छठी मईया", en: "Hey Chhathi Maiya", who: "Sharda Sinha", by: "T-Series Bhakti Sagar", tag: "sharda" },
+    { id: "ITgZ41cIApo", hi: "हे छठी मईया (पूरा गीत)", en: "Hey Chhathi Maiya, full song", who: "Sharda Sinha", by: "T-Series Bhakti Sagar", tag: "sharda" },
+    { id: "NkDiSj9c1EA", hi: "दुखवा मिटाईं छठी मईया", en: "Dukhwa Mitayin Chhathi Maiya", who: "Sharda Sinha", by: "Sharda Sinha Official", tag: "sharda" },
+    { id: "MEnyozGodAU", hi: "बाँझी केवड़वा धइले ठाढ़", en: "Baanjhi Kewdwa Dhaile Thaadh", who: "Sharda Sinha", by: "T-Series Bhakti Sagar", tag: "sharda" },
+    { id: "DG8F-csoRAQ", hi: "पहिले पहिल छठी मईया (दूसरा संस्करण)", en: "Pahile Pahil Chhathi Maiya, second version", who: "Sharda Sinha", by: "Worldwide Records Bhojpuri", tag: "sharda" },
+    { id: "lFX48eTRvVs", hi: "दीनानाथ (अपबीट)", en: "Dinanath, upbeat", who: "Sharda Sinha", by: "Saregama Hum Bhojpuri Bhakti", tag: "sharda" },
+    { id: "QNA_wINDlF8", hi: "हो दीनानाथ (बोलों के साथ)", en: "Ho Deenanath, with lyrics on screen", who: "Sharda Sinha", by: "T-Series Bhakti Sagar", tag: "sharda" },
+    { id: "6e6Hp6R5SVU", hi: "उगा हे सूरज देव", en: "Uga Hai Suraj Dev", who: "Anuradha Paudwal", by: "T-Series Bhakti Sagar", tag: "anuradha" },
+    { id: "MafLv79WQYQ", hi: "उगो हो सूरज देव", en: "Ugo Ho Suraj Dev", who: "Bhojpuri Chhath geet", by: "T-Series Bhakti Sagar", tag: "bhojpuri" },
+    { id: "WMKIgzhs4mM", hi: "उगा हो सुरुज देव", en: "Uga Ho Suruj Dev", who: "Shakshi Singh", by: "T-Series Bhakti Sagar", tag: "bhojpuri" },
+    { id: "X7Y3OX6TY4U", hi: "आदित मनाईला", en: "Aadit Manaila", who: "Anuradha Paudwal", by: "T-Series Bhakti Sagar", tag: "anuradha" },
+    { id: "sp_UdM7Aqfc", hi: "अरघ के बेर", en: "Aragh Ke Ber", who: "Anuradha Paudwal", by: "T-Series Bhakti Sagar", tag: "anuradha" },
+    { id: "OSQI61ilOsM", hi: "कांच ही बांस के बहंगिया", en: "Kaanch Hi Baans Ke Bahangiya", who: "Bhojpuri Chhath geet", by: "T-Series Bhakti Sagar", tag: "bhojpuri" },
+    { id: "HlwdeEK2rY8", hi: "कांच ही बांस के बहंगिया", en: "Kaanch Hi Baans Ke Bahangiya, Chhath Pooja Ke Geet", who: "Anuradha Paudwal", by: "T-Series Bhakti Sagar", tag: "anuradha" },
+    { id: "8dNjbCHaGEc", hi: "कांच ही बांस के बहंगिया (नया संस्करण)", en: "Kaanch Hi Baans Ke Bahangiya, new version", who: "Anuradha Paudwal", by: "T-Series Bhakti Sagar", tag: "anuradha" },
+    { id: "bgqo109I7oY", hi: "कांच ही बांस के बहंगिया (पूजा गीत)", en: "Kaanch Hi Baans Ke Bahangiya, Chhath Pooja Geet", who: "Bhojpuri Chhath geet", by: "T-Series Bhakti Sagar", tag: "bhojpuri" },
+    { id: "YTmL4m0Uv_g", hi: "कांचे ही बांस के बहंगिया", en: "Kaanche Hi Baans Ke Bahangiya, Hey Chhath Maiya", who: "Bhojpuri Chhath geet", by: "T-Series Regional", tag: "bhojpuri" },
+    { id: "SwnQqqyec1Q", hi: "कांच ही बांस के बहंगिया (महिमा)", en: "Kaanch Hi Baans Ke Bahangiya, Mahima Chhath Maiyya Ke Apaar", who: "Bhojpuri Chhath geet", by: "T-Series Regional", tag: "bhojpuri" },
+    { id: "Rd0Qz4M89zo", hi: "मारबो रे सुगवा धनुख से", en: "Marbo Re Sugwa Dhanukh Se", who: "Anuradha Paudwal", by: "T-Series Bhakti Sagar", tag: "anuradha" },
+    { id: "jRsXRee52xw", hi: "मारबो रे सुगवा धनुख से (बहंगी छठी माई के जाय)", en: "Maarbo Re Sugva Dhanukh Se, Bahangi Chhath Mayee Ke Jaay", who: "Anuradha Paudwal", by: "T-Series Bhakti Sagar", tag: "anuradha" },
+    { id: "d7gPsRlyR0I", hi: "मारबो रे सुगवा धनुख (नया संस्करण)", en: "Marbo Re Sugwa Dhanukh, new version", who: "Anuradha Paudwal", by: "T-Series Bhakti Sagar", tag: "anuradha" },
+    { id: "GfgC1R4Ry_M", hi: "मारबो रे सुगवा धनुख से (बोलों के साथ)", en: "Marbo Re Sugva Dhanukh Se, with lyrics", who: "Bhojpuri Chhath song", by: "Rajshri Soul", tag: "bhojpuri" },
+    { id: "euEdr_szp1M", hi: "मारबो रे सुगवा धनुष से", en: "Marbo Re Sugwa Dhanush Se", who: "Riya Singh", by: "Shubham Music", tag: "bhojpuri" },
+    { id: "wRu4qHaLNB0", hi: "मारबो रे सुगवा धनुष से", en: "Marbo Re Sugwa Dhanush Se", who: "Anupama Das", by: "SANGEET SAHIL", tag: "bhojpuri" },
+    { id: "cQ2eX4SrkNg", hi: "पहिले पहिले बानी कइले छठी मईया", en: "Pahile Pahile Baani Kaile Chhathi Maiya", who: "Dinesh Lal Yadav, Aamrapali Dubey", by: "Worldwide Records Bhojpuri", tag: "bhojpuri" },
+    { id: "BKoD7bTLc2k", hi: "जोड़े जोड़े फलवा", en: "Jode Jode Falwa", who: "Pawan Singh", by: "T-Series Hamaar Bhojpuri", tag: "bhojpuri" },
+    { id: "z3TKq9LVbzM", hi: "उगी सुरुज देव", en: "Ugi Suruj Dev", who: "Pawan Singh", by: "DRJ Records", tag: "bhojpuri" },
+    { id: "yEfWCUUUTDM", hi: "जय छठी मईया", en: "Jai Chhathi Maiya", who: "Pawan Singh, Sonu Nigam, Khushboo Jain", by: "GMJ - Global Music Junction - Bhojpuri", tag: "bhojpuri" },
+    { id: "IKAJdLAviYw", hi: "घूँटी भर मोर धोती भीजे", en: "Ghutti Bhar Mor Dhoti Bhije", who: "Khesari Lal Yadav", by: "Annapurna Films", tag: "bhojpuri" },
+    { id: "KjT19KB4Zdg", hi: "अरघ के बेरा", en: "Aragh Ke Bera", who: "Khesari Lal Yadav, Shilpi Raj", by: "GMJ - Global Music Junction - Bhojpuri", tag: "bhojpuri" },
+    { id: "1eQoVfAkYhE", hi: "बिहारी पिया", en: "Bihari Piya", who: "Khesari Lal Yadav, Komal Singh", by: "GMJ - Global Music Junction - Bhojpuri", tag: "bhojpuri" },
+    { id: "38mTaX7LkgY", hi: "चला गंगा किनारे", en: "Chala Ganga Kinare", who: "Khesari Lal Yadav, Karishma Kakkar", by: "Khesari Music World", tag: "bhojpuri" },
+    { id: "T_YXL_blE3A", hi: "दर्शन देखाई दीही", en: "Darshan Dekhai Dihi", who: "Kalpana Patowary, Ritu", by: "Trimurti Music World", tag: "bhojpuri" },
+    { id: "2c0qHqoJmMQ", hi: "अरघ आदित्य के", en: "Aragh Aditya Ke", who: "Kalpana Patowary", by: "GMJ - Global Music Junction - Bhojpuri", tag: "bhojpuri" },
+    { id: "Mq1V4t3QBH4", hi: "हाली हाली दउरा उठाई", en: "Hali Hali Daura Uthai", who: "Kalpana Patowary", by: "Team Films Bhojpuri", tag: "bhojpuri" },
+    { id: "Kp5qyl31Exo", hi: "छठ व्रत", en: "Chhath Vrat", who: "Aamrapali Dubey, Dinesh Lal Yadav, Kalpana Patowary", by: "Aamrapali Dubey Official", tag: "bhojpuri" },
+    { id: "Vc8wNTgKG1k", hi: "कांच ही बाँस के बहंगिया", en: "Kaanch Hi Baans Ke Bahangiya", who: "Kalpana Patowary", by: "MUSIC BOX Kalpana Pattowary", tag: "bhojpuri" },
+    { id: "FeoWvWv9dj8", hi: "जल्दी से जाइए स्वामी", en: "Jaldi Se Jaiye Swami", who: "Kalpana Patowary", by: "MUSIC BOX Kalpana Pattowary", tag: "bhojpuri" },
+    { id: "tz4Gyn4JllM", hi: "कांच ही बांस के बहंगिया", en: "Kanch Hi Bans Ke Bahangiya", who: "Tripti Shakya", by: "CIC PICTURES", tag: "bhojpuri" },
+    { id: "GMQGZjFn6-4", hi: "नॉन स्टॉप छठ पूजा गीत", en: "Non Stop Chhath Pooja Geet", who: "Sharda Sinha, Anuradha Paudwal", by: "T-Series Bhakti Sagar", tag: "nonstop" },
+    { id: "XE3Xw21GFPI", hi: "टॉप छठ पूजा गीत", en: "Top Chhath Pooja Geet", who: "Sharda Sinha, Anuradha Paudwal", by: "T-Series Bhakti Sagar", tag: "nonstop" },
+    { id: "-7ro6fTrchg", hi: "छठ पूजा के गीत संग्रह", en: "Chhath Pooja Ke Geet Sangrah", who: "Anuradha Paudwal, Sharda Sinha", by: "T-Series Bhakti Sagar", tag: "nonstop" },
+    { id: "MNPg56UEB2Q", hi: "छठ पूजा गीत संग्रह", en: "Chhath Pooja Geet Sangrah", who: "Anuradha Paudwal, Kalpana", by: "T-Series Bhakti Sagar", tag: "nonstop" },
+    { id: "CGQ-3EFVZfA", hi: "छठ पूजा के गीत", en: "Chhath Pooja Ke Geet", who: "Anuradha Paudwal, Sharda Sinha, Kavita Paudwal", by: "T-Series Bhakti Sagar", tag: "nonstop" },
+    { id: "zqscuIDJjLk", hi: "छठ पूजा के गीत (2022)", en: "Chhath Pooja Ke Geet, 2022", who: "Anuradha Paudwal", by: "T-Series Bhakti Sagar", tag: "nonstop" },
+    { id: "gDfLtZyeRCA", hi: "सकल जगतारिणी हे छठी मईया", en: "Sakal Jagtarini Hey Chhathi Maiya, video jukebox", who: "Sharda Sinha", by: "T-Series Bhakti Sagar", tag: "nonstop" },
+    { id: "2KHYupToh2Q", hi: "छठ पूजा गीत (अरघ)", en: "Bhojpuri Chhath Pooja Geet, Arag, audio jukebox", who: "Sharda Sinha", by: "T-Series Bhakti Sagar", tag: "nonstop" },
+    { id: "PFXw57i4mxM", hi: "शारदा सिन्हा के सर्वश्रेष्ठ छठ गीत", en: "Best of Sharda Sinha, audio jukebox", who: "Sharda Sinha", by: "T-Series Bhakti Sagar", tag: "nonstop" },
+    { id: "gh6cssL0dr8", hi: "शारदा सिन्हा के सर्वश्रेष्ठ छठ गीत (2015)", en: "Best of Sharda Sinha, audio jukebox 2015", who: "Sharda Sinha", by: "T-Series Hamaar Bhojpuri", tag: "nonstop" },
+    { id: "KEefFWJzpkg", hi: "छठी मईया (वीडियो जूकबॉक्स)", en: "Chhathi Maiya, best of Sharda Sinha video jukebox", who: "Sharda Sinha", by: "T-Series Hamaar Bhojpuri", tag: "nonstop" },
+    { id: "u2rkSu5LYbk", hi: "सुरुज भइले बिहान", en: "Suruj Bhaile Bihaan, video jukebox", who: "Sharda Sinha", by: "T-Series Hamaar Bhojpuri", tag: "nonstop" },
+    { id: "uVgmUQeLB3Y", hi: "उगा हो सूरजदेव (जूकबॉक्स)", en: "Uga Ho Surajdev, audio jukebox", who: "Sharda Sinha, Anuradha Paudwal", by: "T-Series Hamaar Bhojpuri", tag: "nonstop" },
+    { id: "jwhOARFwCwg", hi: "शारदा सिन्हा के छठ गीत", en: "Best of Sharda Sinha Chhath Geet", who: "Sharda Sinha", by: "Sharda Sinha Official", tag: "nonstop" },
+    { id: "SbSogtTe5sA", hi: "शारदा सिन्हा छठ पूजा गीत", en: "Sharda Sinha Chhath Pooja Geet, Arag", who: "Sharda Sinha", by: "T-Series Bhakti Sagar", tag: "nonstop" },
+    { id: "BsAFCc901MM", hi: "छठी मईया (शारदा सिन्हा)", en: "Chhathi Maiya, Sharda Sinha Chhath Pooja Geet", who: "Sharda Sinha", by: "T-Series Bhakti Sagar", tag: "nonstop" },
+    { id: "bBE0HVnmhWk", hi: "छठी ऐली नैहर", en: "Chhathi Ailee Naihar, audio jukebox", who: "Nitu Kumar Nootan", by: "T-Series Bhakti Sagar", tag: "nonstop" },
+    { id: "X4Pr_NJi5Ss", hi: "छठ मईया के द्वारे", en: "Chhath Maiya Ke Dware, audio jukebox", who: "Bharat Sharma Vyas", by: "T-Series Hamaar Bhojpuri", tag: "nonstop" },
+    { id: "qLcQcDk26q4", hi: "बहंगी छठ माई के जाय", en: "Bahangi Chhath Maai Ke Jaay, audio jukebox", who: "Devi", by: "T-Series Hamaar Bhojpuri", tag: "nonstop" },
+    { id: "wloxbSAnhRc", hi: "पवन सिंह के टॉप 20 छठ गीत", en: "Pawan Singh top 20 Chhath hits", who: "Pawan Singh", by: "Wave - Sadabahar Hits", tag: "nonstop" },
+    { id: "ZTSwqNa96aI", hi: "कल्पना के हिट छठ गीत", en: "Kalpana Patowary hit Chhath geet, video jukebox", who: "Kalpana Patowary", by: "Bhojpuri Express", tag: "nonstop" },
+    { id: "ipA98YjzA7I", hi: "पारंपरिक छठ पूजा गीत संग्रह", en: "Traditional Chhath Pooja Geet Sangrah, audio jukebox", who: "Sharda Sinha", by: "Tips Bhakti Prem", tag: "nonstop" },
+    { id: "s9aNEwOxWPQ", hi: "भोजपुरी छठ गीत (जूकबॉक्स)", en: "Bhojpuri Chhath geet, audio jukebox", who: "Traditional Chhath geet", by: "Team Films Bhojpuri", tag: "nonstop" }
+  ];
+
+  function $(id) { return document.getElementById(id); }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function fmt(s) { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + pad(s % 60); }
+  function store(op, key, val) {
+    try { if (op === 'get') { return window.localStorage.getItem(key); } window.localStorage.setItem(key, val); } catch (e) { /* unavailable */ }
+    return null;
+  }
+
+  /* ================= scene decoration ================= */
+  (function decorate() {
+    var NS = 'http://www.w3.org/2000/svg';
+    function el(name, attrs, parent) {
+      var n = document.createElementNS(NS, name);
+      for (var k in attrs) { if (Object.prototype.hasOwnProperty.call(attrs, k)) { n.setAttribute(k, attrs[k]); } }
+      parent.appendChild(n);
+      return n;
+    }
+    var seed = 7;
+    function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+    var d = 'M0 566 V530';
+    for (var x = 0; x < 1600; x += 46) { d += ' q' + (18 + rnd() * 10).toFixed(0) + ' ' + (-26 - rnd() * 18).toFixed(0) + ' 46 ' + (rnd() * 8 - 4).toFixed(0); }
+    $('treeline').setAttribute('d', d + ' V566Z');
+    var rip = $('ripples');
+    for (var i = 0; i < 70; i++) {
+      var y = 580 + rnd() * 300;
+      var w = 20 + rnd() * 70 * ((y - 560) / 340 + 0.3);
+      var cx = rnd() * 1600;
+      var l = el('line', { x1: cx, y1: y, x2: cx + w, y2: y, 'class': 'shimmer' }, rip);
+      l.style.animationDelay = (-rnd() * 4.5).toFixed(2) + 's';
+      l.style.opacity = '0.4';
+    }
+    var di = $('diyas');
+    for (var j = 0; j < 12; j++) {
+      var dx = 160 + rnd() * 1280, dy = 700 + rnd() * 150, s = 0.7 + (dy - 700) / 150;
+      var g = el('g', { transform: 'translate(' + dx.toFixed(0) + ' ' + dy.toFixed(0) + ') scale(' + s.toFixed(2) + ')' }, di);
+      el('ellipse', { cx: 0, cy: 6, rx: 11, ry: 3.2, style: 'fill:#000;opacity:0.25' }, g);
+      el('path', { d: 'M-10 0 H10 Q8 8 0 8 Q-8 8 -10 0Z', style: 'fill:var(--accent)' }, g);
+      var f = el('ellipse', { cx: 0, cy: -6, rx: 3.6, ry: 7, 'class': 'flame', style: 'fill:var(--accent2)' }, g);
+      f.style.animationDelay = (-rnd() * 2).toFixed(2) + 's';
+      el('circle', { cx: 0, cy: -6, r: 12, style: 'fill:var(--accent2);opacity:0.2' }, g);
+    }
+    var st = $('stars');
+    for (var k2 = 0; k2 < 40; k2++) { el('circle', { cx: rnd() * 1600, cy: rnd() * 230, r: 0.6 + rnd() * 1.4 }, st); }
+  })();
+
+  /* ================= sunrise / sunset ================= */
+  var timeBtn = $('timeBtn');
+  function setTime(t, silent) {
+    document.documentElement.setAttribute('data-time', t);
+    $('timeLabel').textContent = t === 'usha' ? 'उषा · Sunrise' : 'संध्या · Sunset';
+    if (!silent) { store('set', 'cg_time', t); }
+  }
+  var savedTime = store('get', 'cg_time');
+  var hourIST = new Date(Date.now() + (new Date().getTimezoneOffset() + 330) * 60000).getHours();
+  setTime(savedTime || (hourIST >= 11 && hourIST < 23 ? 'sandhya' : 'usha'), true);
+  timeBtn.addEventListener('click', function () {
+    setTime(document.documentElement.getAttribute('data-time') === 'usha' ? 'sandhya' : 'usha');
+  });
+
+  /* ================= YouTube player ================= */
+  var player = null, ready = false, cur = 0, playing = false, order = [], pos = 0, shuffle = false, pendingAuto = false, errStreak = 0, dragging = false;
+  var failEl = $('tvFail');
+  var filter = 'all';
+  function viewIndices() {
+    var out = [];
+    tracks.forEach(function (t, i) { if (filter === 'all' || t.tag === filter) { out.push(i); } });
+    return out;
+  }
+  function buildOrder() {
+    order = viewIndices();
+    if (shuffle) {
+      for (var i = order.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = order[i]; order[i] = order[j]; order[j] = t; }
+      var at = order.indexOf(cur);
+      if (at > 0) { order.splice(at, 1); order.unshift(cur); }
+    }
+    pos = Math.max(0, order.indexOf(cur));
+  }
+  buildOrder();
+
+  function showNow() {
+    var t = tracks[cur];
+    $('barTitle').textContent = t.hi + ' · ' + t.en;
+    $('barCredit').textContent = 'Credits: ' + (t.who ? t.who + ' · ' : '') + t.by + ' on YouTube';
+    $('art').src = 'https://i.ytimg.com/vi/' + t.id + '/mqdefault.jpg';
+    $('tvNow').textContent = t.hi;
+    $('tvNowEn').textContent = t.en;
+    $('tvBy').textContent = (t.who ? t.who + ' · ' : '') + t.by;
+    $('tvCh').textContent = 'CH ' + pad(cur + 1);
+    var nx = $('tvNextList');
+    nx.innerHTML = '';
+    for (var k = 1; k <= 4 && k < order.length; k++) {
+      var li = document.createElement('li');
+      li.textContent = tracks[order[(pos + k) % order.length]].hi;
+      nx.appendChild(li);
+    }
+    var rows = document.querySelectorAll('.trk');
+    for (var r = 0; r < rows.length; r++) {
+      if (Number(rows[r].getAttribute('data-i')) === cur) { rows[r].setAttribute('aria-current', 'true'); } else { rows[r].removeAttribute('aria-current'); }
+    }
+    document.title = (playing ? '▶ ' : '') + t.en + ' | छठ गीत रेडियो';
+    if ('mediaSession' in navigator && window.MediaMetadata) {
+      try {
+        navigator.mediaSession.metadata = new MediaMetadata({ title: t.en, artist: t.who || t.by, album: 'छठ गीत रेडियो', artwork: [{ src: 'https://i.ytimg.com/vi/' + t.id + '/mqdefault.jpg', sizes: '320x180', type: 'image/jpeg' }] });
+      } catch (e) { /* ignore */ }
+    }
+  }
+
+  function go(i, auto) {
+    cur = (i + tracks.length) % tracks.length;
+    pos = Math.max(0, order.indexOf(cur));
+    failEl.classList.remove('on');
+    showNow();
+    if (!ready) { pendingAuto = !!auto; return; }
+    if (auto) { player.loadVideoById(tracks[cur].id); } else { player.cueVideoById(tracks[cur].id); }
+  }
+  function next(auto) { pos = (pos + 1) % order.length; go(order[pos], auto !== false); }
+  function prev() {
+    if (ready && player.getCurrentTime && player.getCurrentTime() > 5) { player.seekTo(0, true); return; }
+    pos = (pos - 1 + order.length) % order.length; go(order[pos], true);
+  }
+  function toggle() {
+    if (!ready) { pendingAuto = true; return; }
+    if (playing) { player.pauseVideo(); } else { player.playVideo(); }
+  }
+  function setPlaying(p) {
+    playing = p;
+    document.body.classList.toggle('playing', p);
+    $('tvLabel').textContent = p ? 'On air' : 'Standby';
+    document.title = (p ? '▶ ' : '') + tracks[cur].en + ' | छठ गीत रेडियो';
+    if ('mediaSession' in navigator) { try { navigator.mediaSession.playbackState = p ? 'playing' : 'paused'; } catch (e) { /* ignore */ } }
+  }
+
+  var usedNoCookie = false, badRun = 0;
+  function showFail(msg) { failEl.textContent = msg; failEl.classList.add('on'); }
+  function explain(code) {
+    if (code === 153) { return 'YouTube would not play inside this page (error 153). This happens when the page is opened straight from a file, or when the browser or an extension hides the page address from YouTube. Open the site through http://localhost or your hosted link, and turn off ad or privacy blockers for it.'; }
+    if (code === 101 || code === 150) { return 'The owners of these videos do not allow playing them inside other websites (error ' + code + ').'; }
+    if (code === 100) { return 'This video was removed or made private (error 100).'; }
+    if (code === 5) { return 'The browser video player hit an error (error 5). Update the browser, or turn off blockers for this site.'; }
+    if (code === 2) { return 'YouTube rejected the video request (error 2).'; }
+    return 'The player reported error ' + code + '.';
+  }
+  function createPlayer(host) {
+    var holder = $('player');
+    if (!holder) {
+      holder = document.createElement('div');
+      holder.id = 'player';
+      document.querySelector('.tv-screen').insertBefore(holder, failEl);
+    }
+    var vars = { playsinline: 1, rel: 0, modestbranding: 1, iv_load_policy: 3, controls: 1, fs: 0, disablekb: 1 };
+    if (/^https?:$/.test(location.protocol)) { vars.origin = location.origin; vars.widget_referrer = location.href; }
+    var cfg = {
+      videoId: tracks[cur].id,
+      playerVars: vars,
+      events: {
+        onReady: function () {
+          ready = true;
+          player.setVolume(parseInt($('vol').value, 10));
+          failEl.classList.remove('on');
+          if (pendingAuto) { go(cur, true); }
+        },
+        onStateChange: function (e) {
+          if (e.data === 1) { setPlaying(true); badRun = 0; failEl.classList.remove('on'); }
+          else if (e.data === 2) { setPlaying(false); }
+          else if (e.data === 0) { setPlaying(false); next(true); }
+        },
+        onError: function (e) {
+          var code = e && e.data;
+          if (window.console) { console.warn('YouTube player error', code, tracks[cur].id); }
+          if (code === 100 || code === 101 || code === 150) {
+            badRun++;
+            if (badRun >= 5) { showFail(explain(code) + ' Several songs failed in a row, so playback has stopped.'); return; }
+            showFail('This song cannot be played here. Moving on.');
+            setTimeout(function () { failEl.classList.remove('on'); next(true); }, 1000);
+            return;
+          }
+          if (!usedNoCookie) {
+            usedNoCookie = true;
+            showFail('Trying another way to load the player...');
+            try { player.destroy(); } catch (err) { /* ignore */ }
+            ready = false; pendingAuto = true;
+            createPlayer('https://www.youtube-nocookie.com');
+            return;
+          }
+          showFail(explain(code));
+        }
+      }
+    };
+    if (host) { cfg.host = host; }
+    player = new YT.Player('player', cfg);
+  }
+  window.onYouTubeIframeAPIReady = function () { createPlayer(); };
+  (function loadApi() {
+    if (location.protocol === 'file:') {
+      showFail('Open this page through a web address such as http://localhost or your hosted link. YouTube will not play inside a page opened straight from a file.');
+    }
+    var sc = document.createElement('script');
+    sc.src = 'https://www.youtube.com/iframe_api';
+    sc.onerror = function () { showFail('The TV could not load. Please check your internet connection and reload.'); };
+    document.head.appendChild(sc);
+    setTimeout(function () { if (!ready && !failEl.classList.contains('on')) { showFail('Still loading the TV. If this stays blank, check your internet connection.'); } }, 8000);
+  })();
+
+  /* progress */
+  setInterval(function () {
+    if (!ready || !player.getDuration) { return; }
+    var d = player.getDuration() || 0, c = player.getCurrentTime() || 0;
+    $('tCur').textContent = fmt(c);
+    $('tDur').textContent = fmt(d);
+    if (!dragging && d > 0) { $('seek').value = Math.round((c / d) * 1000); }
+  }, 500);
+  $('seek').addEventListener('input', function () { dragging = true; });
+  $('seek').addEventListener('change', function (e) {
+    dragging = false;
+    if (ready && player.getDuration) { player.seekTo((e.target.value / 1000) * player.getDuration(), true); }
+  });
+  $('play').addEventListener('click', toggle);
+  $('tvPlay').addEventListener('click', toggle);
+  $('next').addEventListener('click', function () { next(true); });
+  $('tvNext').addEventListener('click', function () { next(true); });
+  $('prev').addEventListener('click', prev);
+  $('tvPrev').addEventListener('click', prev);
+  $('shuf').addEventListener('click', function () {
+    shuffle = !shuffle;
+    $('shuf').classList.toggle('on', shuffle);
+    $('shuf').setAttribute('aria-pressed', String(shuffle));
+    buildOrder();
+    showNow();
+  });
+  var muted = false;
+  $('mute').addEventListener('click', function () {
+    muted = !muted;
+    $('mute').classList.toggle('on', muted);
+    $('mute').setAttribute('aria-pressed', String(muted));
+    if (ready) { if (muted) { player.mute(); } else { player.unMute(); } }
+  });
+  $('vol').addEventListener('input', function (e) { if (ready) { player.setVolume(parseInt(e.target.value, 10)); } });
+  if ('mediaSession' in navigator) {
+    try {
+      navigator.mediaSession.setActionHandler('play', toggle);
+      navigator.mediaSession.setActionHandler('pause', toggle);
+      navigator.mediaSession.setActionHandler('nexttrack', function () { next(true); });
+      navigator.mediaSession.setActionHandler('previoustrack', prev);
+    } catch (e) { /* ignore */ }
+  }
+
+  /* song list with filters */
+  var tl = $('trackList');
+  var filterDefs = [['all', 'All'], ['sharda', 'Sharda Sinha'], ['anuradha', 'Anuradha Paudwal'], ['bhojpuri', 'More voices'], ['nonstop', 'Non-stop']];
+  function renderList() {
+    tl.innerHTML = '';
+    var n = 0;
+    tracks.forEach(function (t, i) {
+      if (filter !== 'all' && t.tag !== filter) { return; }
+      n++;
+      var li = document.createElement('li');
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'trk';
+      b.setAttribute('data-i', i);
+      b.innerHTML = '<span class="n">' + pad(n) + '</span><span class="tt"><b></b><em></em></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>';
+      b.querySelector('b').textContent = t.hi;
+      b.querySelector('em').textContent = t.en + (t.who ? ' · ' + t.who : '');
+      b.addEventListener('click', function () {
+        go(i, true);
+        if (!document.body.classList.contains('tvmode')) { $('top').scrollIntoView({ behavior: 'smooth' }); }
+      });
+      li.appendChild(b);
+      tl.appendChild(li);
+    });
+    $('songCount').textContent = n + ' songs';
+    showNow();
+  }
+  var fl = $('filters');
+  filterDefs.forEach(function (d) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'chip' + (d[0] === filter ? ' on' : '');
+    b.textContent = d[1];
+    b.setAttribute('data-f', d[0]);
+    b.addEventListener('click', function () {
+      filter = d[0];
+      var all = fl.querySelectorAll('.chip');
+      for (var k = 0; k < all.length; k++) { all[k].classList.toggle('on', all[k].getAttribute('data-f') === filter); }
+      buildOrder();
+      renderList();
+    });
+    fl.appendChild(b);
+  });
+  renderList();
+
+  /* ================= TV mode ================= */
+  var wake = null;
+  function clockTick() {
+    var d = new Date();
+    $('tvClock').textContent = pad(d.getHours()) + ':' + pad(d.getMinutes());
+  }
+  setInterval(clockTick, 15000);
+  clockTick();
+  function enterTV() {
+    document.body.classList.add('tvmode');
+    $('tvBtn').textContent = 'Exit TV mode';
+    try { if (document.documentElement.requestFullscreen) { document.documentElement.requestFullscreen().catch(function () {}); } } catch (e) { /* ignore */ }
+    try { if (navigator.wakeLock) { navigator.wakeLock.request('screen').then(function (l) { wake = l; }).catch(function () {}); } } catch (e) { /* ignore */ }
+    setTimeout(function () { try { $('tvPlay').focus(); } catch (e) { /* ignore */ } }, 50);
+  }
+  function exitTV() {
+    document.body.classList.remove('tvmode');
+    $('tvBtn').textContent = 'TV mode';
+    try { if (document.fullscreenElement && document.exitFullscreen) { document.exitFullscreen(); } } catch (e) { /* ignore */ }
+    try { if (wake && wake.release) { wake.release(); wake = null; } } catch (e) { /* ignore */ }
+  }
+  function toggleTV() { if (document.body.classList.contains('tvmode')) { exitTV(); } else { enterTV(); } }
+  $('tvBtn').addEventListener('click', toggleTV);
+  $('tvExit').addEventListener('click', exitTV);
+  document.addEventListener('fullscreenchange', function () {
+    if (!document.fullscreenElement && document.body.classList.contains('tvmode')) { exitTV(); }
+  });
+  if (location.hash === '#tv') { document.body.classList.add('tvmode'); $('tvBtn').textContent = 'Exit TV mode'; }
+  document.addEventListener('keydown', function (e) {
+    var tag = (e.target && e.target.tagName) || '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') { return; }
+    var inTV = document.body.classList.contains('tvmode');
+    if (e.key === 'ArrowRight' && inTV) { next(true); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft' && inTV) { prev(); e.preventDefault(); }
+    else if ((e.key === ' ' || e.key === 'Enter') && inTV && tag !== 'BUTTON') { toggle(); e.preventDefault(); }
+    else if (e.key === 'Escape' && inTV) { exitTV(); }
+    else if ((e.key === 'm' || e.key === 'M') && ready) { $('mute').click(); }
+    else if ((e.key === 't' || e.key === 'T')) { toggleTV(); }
+  });
+
+  /* share */
+  $('shareBtn').addEventListener('click', function () {
+    var url = location.href.split('#')[0];
+    var data = { title: 'छठ गीत रेडियो', text: 'Chhath geet playing right here', url: url };
+    if (navigator.share) { navigator.share(data).catch(function () {}); return; }
+    var done = function () { $('shareBtn').textContent = 'Link copied'; setTimeout(function () { $('shareBtn').textContent = 'Share'; }, 2000); };
+    try { navigator.clipboard.writeText(url).then(done, function () {}); } catch (e) { /* ignore */ }
+  });
+
+  /* ================= countdown and active day (IST) ================= */
+  function ts(d) { return Date.parse(d + 'T00:00:00+05:30'); }
+  var startT = ts('2026-11-13'), endT = ts('2026-11-17');
+  function updateCount() {
+    var now = Date.now(), msg, short;
+    if (now < startT) { var d = Math.ceil((startT - now) / 86400000); msg = '<b>' + d + '</b> दिन बाकी · until Nahay Khay'; short = d + ' दिन बाकी · until Nahay Khay'; }
+    else if (now < endT) { msg = '<b>आज</b> छठ महापर्व चल रहा है'; short = 'आज छठ महापर्व चल रहा है'; }
+    else { msg = 'छठ 2026 संपन्न। अगले साल फिर मिलेंगे।'; short = msg; }
+    $('count').innerHTML = msg;
+    $('tvCd').textContent = short;
+    var items = document.querySelectorAll('#days .day');
+    for (var i = 0; i < items.length; i++) {
+      var s = ts(items[i].getAttribute('data-start')), e = ts(items[i].getAttribute('data-end'));
+      if (now >= s && now < e) { items[i].classList.add('is-now'); } else { items[i].classList.remove('is-now'); }
+    }
+  }
+  function tickStrip() {
+    var now = Date.now(), strip = $('cdStrip');
+    if (now >= startT) {
+      strip.classList.add('live');
+      $('cdLabel').textContent = now < endT ? 'आज छठ महापर्व चल रहा है · जय छठी मईया' : 'छठ 2026 संपन्न। अगले साल फिर मिलेंगे।';
+      return;
+    }
+    var t = Math.floor((startT - now) / 1000), p = function (n) { return n < 10 ? '0' + n : String(n); };
+    $('cdD').textContent = Math.floor(t / 86400); $('cdH').textContent = p(Math.floor(t % 86400 / 3600)); $('cdM').textContent = p(Math.floor(t % 3600 / 60)); $('cdS').textContent = p(t % 60);
+  }
+  tickStrip(); setInterval(tickStrip, 1000);
+  updateCount();
+  setInterval(updateCount, 60000);
+
+  (function () {
+    var sc = document.querySelector('.scene'), mq = window.matchMedia('(max-width: 520px)');
+    function fit() {
+      if (mq.matches) { sc.setAttribute('viewBox', '330 0 900 900'); sc.setAttribute('preserveAspectRatio', 'xMinYMid slice'); }
+      else { sc.setAttribute('viewBox', '0 0 1600 900'); sc.setAttribute('preserveAspectRatio', 'xMidYMax slice'); }
+    }
+    fit(); if (mq.addEventListener) { mq.addEventListener('change', fit); }
+  })();
+  /* ================= wish wall (stored by /api/wishes) ================= */
+  (function () {
+    var wi = $('wishInput'), ws = $('wishStatus'), wg = $('wishGo'), wall = $('wall'), st = $('wallState');
+    wi.addEventListener('input', function () { $('wishCounter').textContent = Array.from(wi.value).length + ' / 280'; });
+    function ago(t) {
+      var s = Math.max(0, Math.round((Date.now() - t) / 1000));
+      if (s < 60) { return 'just now'; } if (s < 3600) { return Math.floor(s / 60) + ' min ago'; } if (s < 86400) { return Math.floor(s / 3600) + ' h ago'; }
+      return new Date(t).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+    }
+    function load() {
+      fetch('/api/wishes', { cache: 'no-store' }).then(function (r) { if (!r.ok) { throw r.status; } return r.json(); }).then(function (list) {
+        wall.textContent = '';
+        st.textContent = list.length ? '' : 'No wishes yet. Be the first.';
+        list.forEach(function (w) {
+          var c = document.createElement('div'); c.className = 'wish-card';
+          var p = document.createElement('p'); p.textContent = String(w.text || '');
+          var t = document.createElement('span'); t.className = 'when'; t.textContent = ago(Number(w.t) || Date.now());
+          c.appendChild(p); c.appendChild(t); wall.appendChild(c);
+        });
+      }).catch(function (code) {
+        st.textContent = code === 503 ? 'The wish wall is being set up. Please check back soon.' : 'The wishes could not be loaded right now.';
+        if (code === 503 || code === 404) { wg.disabled = true; }
+      });
+    }
+    load();
+    $('wishForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var text = wi.value.trim(), n = Array.from(text).length;
+      if (n < 3) { ws.textContent = 'Please write a few words first.'; return; }
+      wg.disabled = true; ws.textContent = 'Sending...';
+      fetch('/api/wishes', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ text: text }) }).then(function (r) {
+        if (r.status === 201) { wi.value = ''; $('wishCounter').textContent = '0 / 280'; ws.textContent = 'Your diya is on the wall. जय छठी मईया।'; load(); }
+        else if (r.status === 429) { ws.textContent = 'Please wait a minute before the next wish.'; }
+        else if (r.status === 400) { ws.textContent = 'Please keep it to 3 to 280 characters, with no links, numbers or email.'; }
+        else { ws.textContent = 'Could not post right now. Your text is kept here. Please try again.'; }
+      }).catch(function () { ws.textContent = 'Could not reach the server. Your text is kept here.'; })
+        .then(function () { wg.disabled = false; });
+    });
+  })();
+})();
+</script>
+</body>
+</html>
